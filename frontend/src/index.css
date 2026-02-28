@@ -1,0 +1,273 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply antialiased text-slate-800 dark:text-slate-200 bg-background-light dark:bg-background-dark font-body;
+    }
+
+    /* Global Dark Mode Overrides for Legacy Containers */
+    .dark .container,
+    .dark .main-content,
+    .dark .card,
+    .dark .panel {
+        @apply bg-surface-dark text-slate-200 border-white/5;
+    }
+
+    .dark input,
+    .dark select,
+    .dark textarea {
+        @apply bg-white/5 border-white/10 text-white placeholder-gray-500 focus:ring-primary/50;
+    }
+
+    .dark table {
+        @apply text-slate-300;
+    }
+
+    .dark th {
+        @apply bg-white/5 border-white/5 text-gray-400;
+    }
+
+    .dark td {
+        @apply border-white/5;
+    }
+
+    /* Fix headings in dark mode */
+    .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+        color: #e2e8f0 !important;
+    }
+
+    /* Fix labels and text in dark mode */
+    .dark label {
+        color: #94a3b8 !important;
+    }
+
+    .dark p {
+        color: #cbd5e1;
+    }
+
+    .dark strong {
+        color: #f1f5f9 !important;
+    }
+
+    .dark span {
+        color: inherit;
+    }
+}
+
+@layer components {
+    .glass-header {
+        @apply bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-200 dark:border-white/10;
+    }
+
+    .glow-border {
+        @apply relative border border-gray-200 dark:border-white/10;
+    }
+
+    /* Custom Scrollbar for Next-Gen Look */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+    }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   NUCLEAR DARK MODE OVERRIDES
+   These override inline styles (which have highest specificity)
+   by using !important on broad selectors.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Force dark backgrounds on ALL divs that have inline white/light backgrounds */
+.dark div[style],
+.dark section[style],
+.dark article[style],
+.dark main[style] {
+    background-color: #0F172A !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: none !important;
+}
+
+/* Preserve gradient backgrounds and specific colored backgrounds */
+.dark div[style*="gradient"],
+.dark div[style*="rgba"],
+.dark div[style*="transparent"],
+.dark div[style*="#2563eb"],
+.dark div[style*="#3282b8"],
+.dark div[style*="#28a745"],
+.dark div[style*="#dc3545"],
+.dark div[style*="#ffc107"],
+.dark div[style*="rgb(37"],
+.dark div[style*="rgb(40"],
+.dark div[style*="rgb(220"],
+.dark div[style*="#e74c3c"],
+.dark div[style*="#27ae60"],
+.dark div[style*="#f39c12"] {
+    background-color: unset !important;
+    color: unset !important;
+}
+
+/* Fix inline-styled headings */
+.dark h1[style], .dark h2[style], .dark h3[style], .dark h4[style] {
+    color: #e2e8f0 !important;
+}
+
+/* Fix inline-styled paragraphs and spans */
+.dark p[style] {
+    color: #94a3b8 !important;
+}
+
+/* Fix inline-styled buttons - keep colored buttons as-is */
+.dark button[style] {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Fix inline-styled inputs */
+.dark input[style],
+.dark select[style],
+.dark textarea[style] {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #e2e8f0 !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Fix clinical-input class used in RegistroInteligente */
+.dark .clinical-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.15) !important;
+    color: #e2e8f0 !important;
+}
+
+.dark .clinical-input:focus {
+    border-color: #00E5FF !important;
+    box-shadow: 0 0 0 4px rgba(0, 229, 255, 0.1) !important;
+}
+
+.dark .clinical-label {
+    color: #94a3b8 !important;
+}
+
+/* Fix table cells with inline styles */
+.dark td[style], .dark th[style] {
+    color: #cbd5e1 !important;
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Fix specific color values used across components */
+.dark [style*="color: #1a3a5c"],
+.dark [style*="color: #1b262c"],
+.dark [style*="color: #1e293b"],
+.dark [style*="color: #333"],
+.dark [style*="color: #555"],
+.dark [style*="color: #666"],
+.dark [style*="color: #4a5568"],
+.dark [style*="color: #64748b"] {
+    color: #94a3b8 !important;
+}
+
+/* Fix backgrounds specifically */
+.dark [style*="background-color: #f0f8ff"],
+.dark [style*="background: #f0f8ff"],
+.dark [style*="backgroundColor: #f0f8ff"],
+.dark [style*="background-color: #f8f9fa"],
+.dark [style*="background: #f8f9fa"],
+.dark [style*="background-color: #eff6ff"],
+.dark [style*="background: #eff6ff"],
+.dark [style*="background-color: #f8fafc"],
+.dark [style*="background: #f8fafc"],
+.dark [style*="background-color: #f1f5f9"],
+.dark [style*="background: #f1f5f9"] {
+    background-color: #020617 !important;
+}
+
+/* Fix any element with white background */
+.dark [style*="background: white"],
+.dark [style*="background-color: white"],
+.dark [style*="background: rgb(255"],
+.dark [style*="background-color: rgb(255"] {
+    background-color: #0F172A !important;
+}
+
+/* Fix border colors */
+.dark [style*="border-color: #e2e8f0"],
+.dark [style*="border: 1px solid #e2e8f0"],
+.dark [style*="border: 1.5px solid #e2e8f0"],
+.dark [style*="border: 2px solid #e2e8f0"],
+.dark [style*="border: 1px solid #f1f5f9"],
+.dark [style*="border: 1px solid #bfdbfe"] {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ── Animations ───────────────────────────────────────────── */
+@keyframes pulse-ring {
+    0% { transform: scale(0.33); opacity: 0; }
+    50% { opacity: 0.5; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+.pulse-circle {
+    animation: pulse-ring 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 5px rgba(0, 229, 255, 0.3); }
+    50% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.6), 0 0 40px rgba(0, 229, 255, 0.2); }
+}
+
+@keyframes borderGlow {
+    0%, 100% { border-color: rgba(0, 229, 255, 0.2); }
+    50% { border-color: rgba(0, 229, 255, 0.6); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-slide-up { animation: slideUp 0.5s ease-out both; }
+.animate-slide-in-left { animation: slideInLeft 0.4s ease-out both; }
+.animate-scale-in { animation: scaleIn 0.4s ease-out both; }
+.animate-shimmer { animation: shimmer 2s linear infinite; background-size: 200% 100%; }
+.animate-glow { animation: glow 2s ease-in-out infinite; }
+.animate-border-glow { animation: borderGlow 2s ease-in-out infinite; }
+
+/* Staggered animation delays */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* Sidebar overlay for mobile */
+.sidebar-overlay {
+    @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-30 transition-opacity duration-300;
+}
